@@ -47,7 +47,17 @@ export default function App() {
     setLetras(novoArray);
 
     if(palavraSorteada.includes(letra)){
-      console.log('acertou a letra');
+
+      const novaPalavraForca = [...sortearJogo]
+      
+      palavraSorteada.forEach((l, indice) => {
+        if(l === letra){
+          novaPalavraForca[indice] = l;
+        }
+      })
+
+      setsortearJogo(novaPalavraForca);
+
     }else{
       const errosTotal = quantidadeErros + 1;
       setquantidadeErros(errosTotal);
