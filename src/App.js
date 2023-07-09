@@ -11,12 +11,15 @@ import palavras from './palavras';
 
 const palavrasAlfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
+const imagens = [imagem1, imagem2, imagem3, imagem4, imagem5, imagem6, imagem7]
+
 export default function App() {
 
   const [desabilitar, setDesabilitar] = useState(true);
-  const [palavraSorteada, setpalavraSorteada] = useState('');
+  const [palavraSorteada, setpalavraSorteada] = useState([]);
   const [sortearJogo, setsortearJogo] = useState([]);
   const [letras, setLetras] = useState([...palavrasAlfabeto]);
+  const [quantidadeErros, setquantidadeErros] = useState(0);
 
   function iniciar() {
     setDesabilitar(false);
@@ -30,9 +33,9 @@ export default function App() {
 
     const palavra = palavras[palavrasSorteadas];
 
-    setpalavraSorteada(palavra);
-
     const arrayPalavras = palavra.split('');
+
+    setpalavraSorteada(arrayPalavras);
 
     const underline = arrayPalavras.map(letra => ' _')
     setsortearJogo(underline);
@@ -43,12 +46,19 @@ export default function App() {
     console.log(novoArray);
     setLetras(novoArray);
 
+    if(palavraSorteada.includes(letra)){
+      console.log('acertou a letra');
+    }else{
+      const errosTotal = quantidadeErros + 1;
+      setquantidadeErros(errosTotal);
+    }
+
   }
 
   return (
     <div className="container-tela">
       <div className="container-forca">
-        <img src={imagem1} alt="imagem da forca" />
+        <img src={imagens[quantidadeErros]} alt="imagem da forca" />
         <button onClick={iniciar}>Escreva a palavra</button>
         <h1>{sortearJogo}</h1>
       </div>
