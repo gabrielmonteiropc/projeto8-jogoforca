@@ -1,4 +1,3 @@
-/* ----------------------------------------------- Tela */
 .container-tela {
     width: 100vw;
     height: 100vh;
@@ -8,7 +7,6 @@
     justify-content: center;
 }
 
-/* ----------------------------------------------- Forca */
 .container-forca {
     display: flex;
     align-items: flex-end;
@@ -18,11 +16,11 @@
     justify-content: space-between;
 }
 
-.container-forca > img {
+.container-forca>img {
     width: 400px;
 }
 
-.container-forca > button {
+.container-forca>button {
     background-color: #27ae60;
     border-radius: 8px;
     border-style: none;
@@ -39,13 +37,12 @@
     min-width: 150px;
 }
 
-.container-forca > h1 {
+.container-forca>h1 {
     font-size: 40px;
     margin-right: 5px;
     font-family: "Segoe UI";
 }
 
-/* ----------------------------------------------- Letras */
 .container-letras {
     display: flex;
     flex-wrap: wrap;
@@ -54,7 +51,7 @@
     align-items: center;
 }
 
-.container-letras > button {
+.container-letras>button {
     width: 40px;
     height: 40px;
     background-color: #e1ecf4;
@@ -67,20 +64,19 @@
     margin: 4px;
 }
 
-.container-letras > button:hover {
+.container-letras>button:hover {
     background-color: #b3d3ea;
     color: #2c5777;
     cursor: pointer;
 }
 
-.container-letras > button:disabled {
+.container-letras>button:disabled {
     background-color: #9faab5;
     border: 1px solid #9faab5;
     color: #79818a;
     cursor: not-allowed;
 }
 
-/* ----------------------------------------------- Input */
 .container-input {
     display: flex;
     align-items: center;
@@ -90,7 +86,7 @@
     margin-left: 50px;
 }
 
-.container-input > button {
+.container-input>button {
     background-color: #e1ecf4;
     border-radius: 5px;
     border: 1px solid #7aa7c7;
@@ -103,13 +99,13 @@
     cursor: pointer;
 }
 
-.container-input > button:hover {
+.container-input>button:hover {
     background-color: #b3d3ea;
     color: #2c5777;
     cursor: pointer;
 }
 
-.container-input > input {
+.container-input>input {
     height: 12px;
     width: 300px;
     border-radius: 5px;
@@ -119,13 +115,12 @@
     font-size: 15px;
 }
 
-.container-input > span {
+.container-input>span {
     font-family: "Segoe UI";
     font-size: 18px;
     margin-right: 10px;
 }
 
-/* ----------------------------------------------- Cores */
 .preto {
     color: black;
 }
