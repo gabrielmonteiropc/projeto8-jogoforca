@@ -16,9 +16,11 @@ export default function App() {
   const [desabilitar, setDesabilitar] = useState(true);
   const [palavraSorteada, setpalavraSorteada] = useState('');
   const [sortearJogo, setsortearJogo] = useState([]);
+  const [letras, setLetras] = useState([...palavrasAlfabeto]);
 
   function iniciar() {
     setDesabilitar(false);
+    setLetras([]);
 
     sortearPalavra();
   }
@@ -36,6 +38,13 @@ export default function App() {
     setsortearJogo(underline);
   }
 
+  function selecionarLetra(letra){
+    const novoArray = [...letras, letra];
+    console.log(novoArray);
+    setLetras(novoArray);
+
+  }
+
   return (
     <div className="container-tela">
       <div className="container-forca">
@@ -45,7 +54,15 @@ export default function App() {
       </div>
 
       <div className="container-letras">
-        {palavrasAlfabeto.map(letra => <button key={letra} disabled={desabilitar}>{letra}</button>)}
+        {palavrasAlfabeto.map(letra => (
+          <button
+            key={letra}
+            disabled={letras.includes(letra) ? true : false}
+            onClick={ () => selecionarLetra(letra)}
+            >
+            {letra}
+          </button>)
+        )}
       </div>
 
       <div className="container-input">
