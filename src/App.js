@@ -22,9 +22,20 @@ export default function App() {
   const [quantidadeErros, setquantidadeErros] = useState(0);
   const [corPalavra, setcorPalavra] = useState('preto');
 
+
+  function desligarJogo() {
+
+    setDesabilitar(true);
+    setLetras([...palavrasAlfabeto]);
+
+  }
   function iniciar() {
+
     setDesabilitar(false);
     setLetras([]);
+    setcorPalavra('preto');
+    setquantidadeErros(0);
+
 
     sortearPalavra();
   }
@@ -65,17 +76,19 @@ export default function App() {
 
     setsortearJogo(novaPalavraForca);
 
-    if( palavraSorteada.join('') === novaPalavraForca.join('') ){
+    if (palavraSorteada.join('') === novaPalavraForca.join('')) {
       setcorPalavra('verde');
+      desligarJogo();
     }
   }
 
   function errouLetra() {
     const errosTotal = quantidadeErros + 1;
     setquantidadeErros(errosTotal);
-    if( errosTotal === 6){
+    if (errosTotal === 6) {
       setsortearJogo(palavraSorteada);
       setcorPalavra('vermelho');
+      desligarJogo();
 
     }
   }
@@ -85,7 +98,7 @@ export default function App() {
       <div className="container-forca">
         <img src={imagens[quantidadeErros]} alt="imagem da forca" />
         <button onClick={iniciar}>Escreva a palavra</button>
-        <h1 className = {corPalavra}> {sortearJogo} </h1>
+        <h1 className={corPalavra}> {sortearJogo} </h1>
       </div>
 
       <div className="container-letras">
