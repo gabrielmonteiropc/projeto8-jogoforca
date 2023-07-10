@@ -20,6 +20,7 @@ export default function App() {
   const [sortearJogo, setsortearJogo] = useState([]);
   const [letras, setLetras] = useState([...palavrasAlfabeto]);
   const [quantidadeErros, setquantidadeErros] = useState(0);
+  const [corPalavra, setcorPalavra] = useState('preto');
 
   function iniciar() {
     setDesabilitar(false);
@@ -41,28 +42,42 @@ export default function App() {
     setsortearJogo(underline);
   }
 
-  function selecionarLetra(letra){
+  function selecionarLetra(letra) {
     const novoArray = [...letras, letra];
-    console.log(novoArray);
     setLetras(novoArray);
 
-    if(palavraSorteada.includes(letra)){
+    if (palavraSorteada.includes(letra)) {
+      acertouLetra(letra);
 
-      const novaPalavraForca = [...sortearJogo]
-      
-      palavraSorteada.forEach((l, indice) => {
-        if(l === letra){
-          novaPalavraForca[indice] = l;
-        }
-      })
-
-      setsortearJogo(novaPalavraForca);
-
-    }else{
-      const errosTotal = quantidadeErros + 1;
-      setquantidadeErros(errosTotal);
+    } else {
+      errouLetra();
     }
+  }
 
+  function acertouLetra(letra) {
+    const novaPalavraForca = [...sortearJogo]
+
+    palavraSorteada.forEach((l, indice) => {
+      if (l === letra) {
+        novaPalavraForca[indice] = l;
+      }
+    })
+
+    setsortearJogo(novaPalavraForca);
+
+    if( palavraSorteada.join('') === novaPalavraForca.join('') ){
+      setcorPalavra('verde');
+    }
+  }
+
+  function errouLetra() {
+    const errosTotal = quantidadeErros + 1;
+    setquantidadeErros(errosTotal);
+    if( errosTotal === 6){
+      setsortearJogo(palavraSorteada);
+      setcorPalavra('vermelho');
+
+    }
   }
 
   return (
@@ -70,7 +85,7 @@ export default function App() {
       <div className="container-forca">
         <img src={imagens[quantidadeErros]} alt="imagem da forca" />
         <button onClick={iniciar}>Escreva a palavra</button>
-        <h1>{sortearJogo}</h1>
+        <h1 className = {corPalavra}> {sortearJogo} </h1>
       </div>
 
       <div className="container-letras">
@@ -78,8 +93,8 @@ export default function App() {
           <button
             key={letra}
             disabled={letras.includes(letra) ? true : false}
-            onClick={ () => selecionarLetra(letra)}
-            >
+            onClick={() => selecionarLetra(letra)}
+          >
             {letra}
           </button>)
         )}
