@@ -38,9 +38,9 @@ export default function Jogo({quantidadeErros, setquantidadeErros, sortearJogo, 
 
     return (
         <div className="container-forca">
-            <img src={imagens[quantidadeErros]} alt="imagem da forca" />
-            <button onClick={iniciar}>Escreva a palavra</button>
-            <h1 className={corPalavra}> {sortearJogo} </h1>
+            <img src={imagens[quantidadeErros]} alt="imagem da forca" data-test="game-image" />
+            <button data-test="choose-word" onClick={iniciar}>Escreva a palavra</button>
+            <h1 data-test="word" className={corPalavra}> {sortearJogo}</h1>
         </div>
     )
 }
