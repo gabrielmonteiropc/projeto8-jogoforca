@@ -14,14 +14,14 @@ export default function App() {
   return (
     <div className="container-tela">
 
-      <Jogo quantidadeErros={quantidadeErros} setquantidadeErros={setquantidadeErros} sortearJogo={sortearJogo} corPalavra={corPalavra} setcorPalavra={setcorPalavra} setDesabilitar={setDesabilitar} palavraSorteada={palavraSorteada} setpalavraSorteada={setpalavraSorteada} setsortearJogo={setsortearJogo} setLetras={setLetras}/>
+      <Jogo quantidadeErros={quantidadeErros} setquantidadeErros={setquantidadeErros} sortearJogo={sortearJogo} corPalavra={corPalavra} setcorPalavra={setcorPalavra} setDesabilitar={setDesabilitar} palavraSorteada={palavraSorteada} setpalavraSorteada={setpalavraSorteada} setsortearJogo={setsortearJogo} setLetras={setLetras} desabilitar={desabilitar}/>
 
-      <Letras quantidadeErros={quantidadeErros} setquantidadeErros={setquantidadeErros} sortearJogo={sortearJogo} setsortearJogo={setsortearJogo} setcorPalavra={setcorPalavra} setDesabilitar={setDesabilitar} palavraSorteada={palavraSorteada} setpalavraSorteada={setpalavraSorteada} letras={letras} setLetras={setLetras}/>
+      <Letras quantidadeErros={quantidadeErros} setquantidadeErros={setquantidadeErros} sortearJogo={sortearJogo} setsortearJogo={setsortearJogo} setcorPalavra={setcorPalavra} setDesabilitar={setDesabilitar} palavraSorteada={palavraSorteada} setpalavraSorteada={setpalavraSorteada} letras={letras} setLetras={setLetras} desabilitar={desabilitar}/>
 
       <div className="container-input">
         <span>Já sei a palavra</span>
-        <input disabled={desabilitar} />
-        <button disabled={desabilitar}>Chute</button>
+        <input data-test="guess-input" disabled={desabilitar} />
+        <button data-test="guess-button" disabled={desabilitar}>Chute</button>
       </div>
     </div>
   );
